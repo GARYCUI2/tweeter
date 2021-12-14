@@ -1,10 +1,9 @@
 header {
-  margin-top: 120px;
+
   background-color:orange;
   color: #FFFFFF;
   height: 400px;
   width:100vw;
-  position: absolute;
 
   display: flex;
   align-items: center;
