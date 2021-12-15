@@ -1,16 +1,19 @@
 nav {
-  top: 0;
   background-color:#4056A1 ;
   color: #FFFFFF;
   height: 120px;
   padding-left: 1.5em;
   padding-right: 1.5em;
-  width:100vw;
   font-family: 'Bungee', cursive;
 
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+
 }
 .angle-double-down {
   display: flex;

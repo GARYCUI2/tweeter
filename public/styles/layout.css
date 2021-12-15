@@ -38,3 +38,54 @@ body {
  .overInput {
   color: red;
  }
+
+article {
+  width: 90vw;
+  border-style: solid;
+  background-color: transparent; 
+  border-color: rgb(29, 31, 34);
+  border-width: 5px 5px 5px 5px;
+  
+}
+ .space_between {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Bungee', cursive;
+  color: #545149;
+  flex-direction:row;
+}
+
+.fa-solid:hover {
+  color: gold;
+  
+}
+
+article.tweet header {
+  margin-top: 0px;
+  height: 100px;
+  width: 100%;
+  background-color: transparent;
+
+}
+
+
+#tweet-text {
+  border-width: 0px 0px 3px 0px;
+  width: 90vw;
+  background-color: transparent; 
+}
+
+button {
+  background-color: #4056A1 ;
+}
+
+.tweet:hover {
+  box-shadow: 5px 5px 5px rgb(88, 85, 85);;
+}
+hr {
+  border: 1px solid;
+}
+article {
+  padding: 10px 10px 10px 10px;
+  margin-bottom: 15px;
+}

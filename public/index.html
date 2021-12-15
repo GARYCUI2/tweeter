@@ -60,12 +60,44 @@
       <form method="POST" action="/tweets/">
         <label for="tweet-text">What are you humming about?</label>
         <textarea name="text" id="tweet-text"></textarea>
-        <div class="button-text-layout">
+        <div class="space_between">
           <button type="submit">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
       </form>
+
+      <br>
+      <br>
+      <article class="tweet">
+
+        <header class="space_between">
+
+          <span>BOB</span>
+          <span>@gmail.com</span>
+
+
+        </header>
+
+        <h3 class="tweet-text">wocao</h3>
+
+        <hr>
+        <footer class="space_between">
+          <span>10 days ago</span>
+
+          <div>
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-solid fa-heart"></i>
+          </div>
+
+        </footer>
+      </article>
+
     </section>
+
+
+
+
   </main>
   <script src="./scripts/composer-char-counter.js"></script>
 </body>
