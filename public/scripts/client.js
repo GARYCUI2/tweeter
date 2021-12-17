@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable camelcase */
 
 /*
  * Client-side JS logic goes here
@@ -5,42 +7,18 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
-
-
 const createTweetElement = function(tweet) {
   const $tweet = `
   <article class="tweet">
     <header class="space_between">
       <div>
+        <img src=${tweet.user.avatars}>
         <span>${tweet.user.name}</span>
-        <span>${tweet.user.avatars}</span>
+        
       </div>
       <span>${tweet.user.handle}</span>
     </header>
+    <span>${tweet.content.text}</span>
     <hr>
     <footer class="space_between">
       <span>${tweet.created_at}</span>
@@ -56,16 +34,64 @@ const createTweetElement = function(tweet) {
 };
 
 const renderTweets = function(tweets) {
-  // loops through tweets
-  for (let tweet of tweets) {
-    // calls createTweetElement for each tweet
-    tweet.created_at = timeago.format(1473245023718);
-    $('.new-tweet').append(createTweetElement(tweet));
-  }
 
-  // takes return value and appends it to the tweets container
+  const reverseTweets = tweets.reverse();
+
+  // loops through tweets
+  for (let tweet of reverseTweets) {
+    // calls createTweetElement for each tweet
+    tweet.created_at = timeago.format(tweet.created_at);
+    $('#tweets-container').append(createTweetElement(tweet));
+  }
 };
 
 $(document).ready(function() {
-  renderTweets(data);
+  //submit function
+  loadtweets();
+
+  $("form").submit(function(event) {
+    // prevent default behavior
+    event.preventDefault();
+
+    //input validation
+    const textInput = $("#tweet-text").val();
+
+    if (textInput.length > 140 || textInput === null || textInput === "") {
+      alert("You type too much or too less bro!!!!!");
+      return;
+    }
+    
+    // get serialized form fata
+    let data = $(this).serialize();
+
+    // post tweets
+    postTweets(data);
+  });
 });
+
+const postTweets = (postData) => {
+  $.ajax('/tweets', { method: 'POST', data: postData })
+    .then(() => {
+      loadtweets();
+    })
+    .fail(function(error) {
+      console.log("Error in submit:", error);
+    });
+};
+
+const clearTweets = function() {
+  $('#tweets-container').empty();
+
+};
+
+const loadtweets = function() {
+  $.ajax('/tweets', { method: 'GET'})
+    .then((tweetData) => {
+      clearTweets();
+      renderTweets(tweetData);
+    })
+    .fail(function(error) {
+      console.log("Error in loadTweets:", error);
+    });
+
+};
