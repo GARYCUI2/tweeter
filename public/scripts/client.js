@@ -18,7 +18,7 @@ const createTweetElement = function(tweet) {
       </div>
       <span>${tweet.user.handle}</span>
     </header>
-    <span>${tweet.content.text}</span>
+    <span>${escape(tweet.content.text)}</span>
     <hr>
     <footer class="space_between">
       <span>${tweet.created_at}</span>
@@ -49,19 +49,22 @@ $(document).ready(function() {
   //submit function
   loadtweets();
 
+  $(".err-pop").slideUp();
+
   $("form").submit(function(event) {
+    
     // prevent default behavior
     event.preventDefault();
+    
+    $(".err-pop").slideUp();
 
     //input validation
     const textInput = $("#tweet-text").val();
-
     if (textInput.length > 140 || textInput === null || textInput === "") {
-      alert("You type too much or too less bro!!!!!");
+      $(".err-pop").slideDown();
       return;
     }
-    
-    // get serialized form fata
+    // get serialized form data
     let data = $(this).serialize();
 
     // post tweets
@@ -80,8 +83,8 @@ const postTweets = (postData) => {
 };
 
 const clearTweets = function() {
+  $("#tweet-text").val("");
   $('#tweets-container').empty();
-
 };
 
 const loadtweets = function() {
@@ -94,4 +97,10 @@ const loadtweets = function() {
       console.log("Error in loadTweets:", error);
     });
 
+};
+
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
 };
