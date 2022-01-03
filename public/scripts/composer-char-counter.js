@@ -15,7 +15,7 @@ $(document).ready(function() {
     
   });
 
-  $('#resetCount').click(function() {
+  $('button').click(function() {
     $('output').text(maxLength);
   });
 });
