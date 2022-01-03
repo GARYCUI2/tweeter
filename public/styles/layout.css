@@ -32,6 +32,8 @@ body {
  .container {
   font-size: 24px;
   width:90vw;
+  margin: auto;
+  
  
  }
 
@@ -53,6 +55,7 @@ article {
   font-family: 'Bungee', cursive;
   color: #545149;
   flex-direction:row;
+  margin-bottom: 30px;
 }
 
 .fa-solid:hover {
@@ -89,3 +92,34 @@ article {
   padding: 10px 10px 10px 10px;
   margin-bottom: 15px;
 }
+
+
+
+/* 
+@media (min-width: 1024px) {
+  body nav {
+    background-color:rgb(63, 95, 236);
+  }
+
+  .total {
+    display: flex;
+    flex-direction:row;
+  }
+ 
+  .part1 {
+    margin-right: 10px;
+  }
+
+  header {
+    height: 20vw;
+    width:20vw;
+  }
+  
+  .part2 {
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+
+  
+
+} */
