@@ -44,42 +44,46 @@
       <i class="fas fa-angle-double-down"></i>
     </div>
   </nav>
-
-  <header>
-    <div class="avatar">
-      <img src="/images/profile-hex.png">
-    </div>
-    <br>
-    <div>
-      <h2>Zhen Cui</h2>
-    </div>
-  </header>
-
-  <!-- Page-specific (main) content here -->
-  <main class="container">
-
-    <section class="new-tweet">
-      <hr>
-      <hr>
-      <div class="err-pop">
-        <h3>"You type too much or nothing, bro!!!!!"
-        </h3>
-      </div>
-      <form method="POST" action="/tweets/">
-        <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
-        <div class="space_between">
-          <button type="submit">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
+  <div class="total">
+    <div class="part1">
+      <header>
+        <div class="avatar">
+          <img src="/images/profile-hex.png">
         </div>
-      </form>
+        <br>
+        <div>
+          <h2>Zhen Cui</h2>
+        </div>
+      </header>
+    </div>
 
-      <br>
-      <br>
+    <div class="part2">
+      <!-- Page-specific (main) content here -->
+      <main class="container">
 
-    </section>
-    <section id='tweets-container'>
-    </section>
+        <section class="new-tweet">
+          <hr>
+          <hr>
+          <div class="err-pop">
+            <h3>"You type too much or nothing, bro!!!!!"
+            </h3>
+          </div>
+          <form method="POST" action="/tweets/">
+            <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+            <div class="space_between">
+              <button id="resetCount" type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
+            </div>
+          </form>
 
+          <br>
+          <br>
+
+        </section>
+        <section id='tweets-container'>
+        </section>
+    </div>
+  </div>
   </main>
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/client.js"></script>
