@@ -12,7 +12,6 @@ $(document).ready(function() {
       $('output').removeClass("overInput");
     }
     $('output').text(newLength);
-    
   });
 
   $('button').click(function() {
