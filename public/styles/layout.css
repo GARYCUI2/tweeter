@@ -95,31 +95,36 @@ article {
 
 
 
-/* 
+
 @media (min-width: 1024px) {
   body nav {
     background-color:rgb(63, 95, 236);
   }
 
   .total {
+    margin-top: 120px;
     display: flex;
     flex-direction:row;
+    width: 100%;
   }
  
   .part1 {
-    margin-right: 10px;
-  }
-
-  header {
-    height: 20vw;
-    width:20vw;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 40%;
   }
   
   .part2 {
-    margin-right: 50px;
-    margin-left: 50px;
+    padding-right: 30px;
+    padding-left: 30px;
+    width: 60%;
   }
 
+  header, .container, .err-pop, form, #tweet-text, .tweet {
+    width: 100%;
+  }
   
-
-} */
+  img {
+    padding-top: 30px;
+  }
+}
