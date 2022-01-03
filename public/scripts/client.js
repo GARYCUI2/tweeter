@@ -49,21 +49,25 @@ $(document).ready(function() {
   //submit function
   loadtweets();
 
-  $(".err-pop").slideUp();
-
   $("form").submit(function(event) {
     
     // prevent default behavior
     event.preventDefault();
     
-    $(".err-pop").slideUp();
+    clearError();
 
     //input validation
     const textInput = $("#tweet-text").val();
-    if (textInput.length > 140 || textInput === null || textInput === "") {
-      $(".err-pop").slideDown();
+    if (textInput.length > 140) {
+      renderError("Too many words!!!");
       return;
     }
+
+    if (textInput === null || textInput === "") {
+      renderError("Cannot post empty tweet");
+      return;
+    }
+
     // get serialized form data
     let data = $(this).serialize();
 
@@ -103,4 +107,23 @@ const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
+};
+
+const createErrorElement = function(message) {
+  const $error = `
+    <div class="err-pop">
+      <h3>
+      ${message}
+      </h3>
+    </div>`;
+
+  return $error;
+};
+
+const renderError = (message) => {
+  $('#error-container').append(createErrorElement(message));
+};
+
+const clearError = () => {
+  $('#error-container').empty();
 };
